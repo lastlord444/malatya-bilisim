@@ -113,5 +113,61 @@
       "errors": [],
       "warnings": []
     }
+  },
+  {
+    "content_id": "MB44-20261108-exam_automation",
+    "tarih": "2026-11-08",
+    "konu": "500 Kişilik Bursluluk Sınavı Sonuçlarında Sıfır Telefon Trafiği",
+    "hedef_kitle": "Kurs, kolej ve özel okul yöneticileri",
+    "hook": "Bursluluk sınavı bittiğinde santraliniz susmuyor, veliler sonuç için kapıda mı bekliyor?",
+    "hizmet": "Sınav ve Bursluluk Otomasyonu (CTA: SINAV)",
+    "video_formatı": "Format C / Problemden Çözüme Mikro İşletme Hikâyesi",
+    "görsel_yaklaşım": "Yığılmış optik formlar ve susmayan telefonlardan Malatya Bilişim bulut sınav paneline geçiş, tek tıkla veli SMS bildirimleri (#0B1020 & #2DE2E6)",
+    "ses_konusma_türü": "Sinematik fon müziği ve arayüz bildirim sesleri (AAC Audio)",
+    "üretim_modeli": "Google Gemini (Veo Video Engine)",
+    "video_dosyası": "data/MB44_20261108_EXAM_v1.mp4",
+    "sha256": "043424686BBECBB2BD185F127EB643ABAFC2D227270E921664487792486D9D79",
+    "generation_start": "2026-11-08T18:13:23",
+    "generation_end": "2026-11-08T18:15:03",
+    "duration_seconds": 20.03,
+    "resolution": "720x1280 (9:16)",
+    "codec": "h264 / aac",
+    "gemini_sohbet_baglantisi": "https://gemini.google.com/app/2deb9a5924d768b5",
+    "caption": "Bursluluk sınavı bittiğinde santraliniz susmuyor, veliler sonuç için kapıda mı bekliyor? 📚📞\n\nYüzlerce öğrencinin optik formlarını manuel girmek, puan sıralamasını Excel'de yapmaya çalışmak ve velilere tek tek karne dağıtmak artık geride kaldı. Malatya Bilişim Sınav Otomasyonu ile sınav sonuçları tek tıkla işlenir, velilere anında kişiselleştirilmiş SMS ve karne linki gider. Sıfır telefon trafiği, sıfır hata!\n\nKurumunuza özel sınav ve bursluluk sistemini incelemek ve ücretsiz demo için yoruma 'SINAV' yazın veya DM'den bize ulaşın. 🚀\n\n#malatya #malatyabilisim #sınavotomasyonu #bursluluk #kursyönetimi #eğitimteknolojileri #özelokul",
+    "seo_metadata": {
+      "primary_keyword": "bursluluk sınav otomasyonu",
+      "secondary_keywords": [
+        "okul sınav sonuç sistemi",
+        "kurs otomasyon yazılımı",
+        "online sınav başvuru"
+      ],
+      "target_cta": "SINAV",
+      "hashtags": [
+        "#malatya",
+        "#malatyabilisim",
+        "#sınavotomasyonu",
+        "#bursluluk",
+        "#kursyönetimi",
+        "#eğitimteknolojileri",
+        "#özelokul"
+      ]
+    },
+    "onerilen_yayin_saati": "19:30 (A/B Test Penceresi: 18.30-21.30 Europe/Istanbul)",
+    "üretim_durumu": "TAMAMLANDI_VE_DOGRULANDI",
+    "kullanıcı_onayı": false,
+    "yayın_durumu": "AWAITING_APPROVAL",
+    "instagram_gönderi_kimliği": null,
+    "video_teknik_rapor": {
+      "is_valid": true,
+      "file_size_bytes": 7958258,
+      "file_size_mb": 7.59,
+      "resolution": "720x1280",
+      "duration": 20.03,
+      "codec": "h264",
+      "has_audio": true,
+      "is_9_16_vertical": true,
+      "errors": [],
+      "warnings": []
+    }
   }
 ]
