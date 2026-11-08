@@ -1,30 +1,29 @@
 {
   "brand_name": "Malatya Bilişim",
   "instagram_account": "@malatyabilisim44",
-  "followers": 405,
   "service_pillars": [
     {
       "id": "exam_automation",
       "name": "Sınav ve Sonuç Otomasyonları",
-      "description": "Sınav, bursluluk, yerleştirme, sonuç sorgulama ve veli SMS otomasyonları",
+      "description": "Kurs/kolej için başvuru, kontenjan, oturum, yerleştirme, sonuç sorgulama ve uygun SMS süreçleri",
       "cta_keyword": "SINAV"
     },
     {
       "id": "web_development",
       "name": "Modern Web Tasarımı ve Yazılımları",
-      "description": "İşletmelere özel yüksek hızlı, dönüşüm odaklı modern web platformları",
+      "description": "Kuruma özel mobil kullanılabilirlik, teklif/randevu akışı, anlaşılır web platformları",
       "cta_keyword": "WEB"
     },
     {
       "id": "ai_agents",
       "name": "Yapay Zekâ Ajanları ve İş Süreçleri",
-      "description": "7/24 müşteri yanıtlayan, randevu oluşturan ve operasyonları otomatikleştiren AI çalışanlar",
+      "description": "Gerçekte desteklenen talepleri sınıflandırma, iş yönlendirme, takip ve tekrarlı görev otomasyonu",
       "cta_keyword": "AJAN"
     },
     {
       "id": "social_media_ai",
       "name": "AI Destekli Sosyal Medya Yönetimi",
-      "description": "İşletmelere özel otomatik Reels, içerik ve büyüme boru hatları",
+      "description": "Markaya özel içerik planlama, üretim, kullanıcı onayı, yayın takibi ve raporlama",
       "cta_keyword": "SOSYAL"
     }
   ],
@@ -40,14 +39,17 @@
       "vibrant_turquoise": "#2DE2E6",
       "off_white": "#F4F7FA"
     },
-    "typography": "Okunabilir, modern sans-serif Türkçe tipografi, üst-orta güvenli alan",
+    "typography": "Okunabilir Türkçe, dikey mobil güvenli alan",
     "video_standards": {
       "aspect_ratio": "9:16",
-      "resolution": "1080x1920",
-      "duration_seconds": 8,
+      "resolution_target": "1080x1920",
+      "duration_policy": "Konuya ve modelin gerçek desteklediği süreye göre 8-10 / 12-20 / 20-30 saniye",
       "format": "MP4",
       "video_codec": "h264",
-      "audio_codec": "aac"
+      "audio_codec": "aac",
+      "audio_allowed": true,
+      "people_and_spoken_turkish_allowed": true
     }
-  }
+  },
+  "claim_policy": "Kaynaksız veri, referans, performans, müşteriye ait özel bilgi, kesin satış ve desteklenmeyen 7/24 özellik iddiaları yasak."
 }
