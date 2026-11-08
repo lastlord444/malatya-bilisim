@@ -1,0 +1,111 @@
+{
+  "version": "2.0",
+  "timezone": "Europe/Istanbul",
+  "instagram": "@malatyabilisim44",
+  "objective": "Doğru işletme ve kurum karar vericilerinden nitelikli DM, teklif ve görüşme talebi. İzlenme sayısı tek başına başarı değildir.",
+  "pillar_policy": "Son 28 günlük tamamlanmış ve taslak içeriklerde en az temsil edilen hizmete öncelik ver; son içerikteki hizmetle aynı olanı mümkünse seçme. Her videoda tek hizmet ve tek hedef kitle.",
+  "pillars": [
+    {
+      "id": "exam_automation",
+      "title": "Sınav/bursluluk otomasyonu",
+      "audience": "Kurs, kolej ve özel okul yöneticileri",
+      "problems": [
+        "Başvuru bilgilerinin elle toparlanması",
+        "Kontenjan ve oturumların karışması",
+        "Sonuç sorgulama telefon trafiği",
+        "Veliye sonuç iletişimi",
+        "Yerleştirmede manuel kontrol yükü"
+      ],
+      "keywords": [
+        "bursluluk sınavı başvurusu",
+        "sınav sonuç sorgulama",
+        "okul sınav otomasyonu"
+      ],
+      "cta": "SINAV",
+      "styles": [
+        "gerçekçi kurum içi mikro hikâye",
+        "ekran akışı demonstrasyonu",
+        "önce/sonra"
+      ]
+    },
+    {
+      "id": "web_development",
+      "title": "Kuruma özel web yazılımı",
+      "audience": "İşletme sahipleri ve pazarlama yöneticileri",
+      "problems": [
+        "Mobilde anlaşılmayan hizmet",
+        "Kaybolan teklif formu",
+        "Yavaş ve karmaşık dönüşüm adımları",
+        "Rezervasyon ekranında sürtünme",
+        "Güven vermeyen ilk ekran"
+      ],
+      "keywords": [
+        "kurumsal web tasarımı",
+        "mobil uyumlu web sitesi",
+        "teklif formu"
+      ],
+      "cta": "WEB",
+      "styles": [
+        "profesyonel UI motion",
+        "gerçekçi işletme senaryosu",
+        "karşılaştırmalı dönüşüm"
+      ]
+    },
+    {
+      "id": "ai_agents",
+      "title": "Yapay zekâ ajanları ve süreç otomasyonu",
+      "audience": "İşletme sahipleri ve operasyon yöneticileri",
+      "problems": [
+        "Yanıtsız kalan müşteri talepleri",
+        "Tekrarlanan veri girişi",
+        "Taleplerin yanlış kişiye gitmesi",
+        "Çok araç arasında unutulan görevler",
+        "Takip edilemeyen randevu talepleri"
+      ],
+      "keywords": [
+        "yapay zekâ ajanı",
+        "iş süreçleri otomasyonu",
+        "müşteri talebi yönetimi"
+      ],
+      "cta": "AJAN",
+      "styles": [
+        "konuşmalı mikro hikâye",
+        "gerçekçi demo",
+        "görsel iş akışı"
+      ]
+    },
+    {
+      "id": "social_media_ai",
+      "title": "AI destekli sosyal medya yönetimi",
+      "audience": "KOBİ, uzman ve markalar",
+      "problems": [
+        "Her gün içerik fikri arama",
+        "İçerik onaylarının dağılması",
+        "Plansız yayın",
+        "Birbirini tekrar eden içerik",
+        "Ölçülmeyen performans"
+      ],
+      "keywords": [
+        "sosyal medya içerik planı",
+        "reels otomasyonu",
+        "içerik onay süreci"
+      ],
+      "cta": "SOSYAL",
+      "styles": [
+        "konuşmalı küçük işletme senaryosu",
+        "hızlı editoryal kurgu",
+        "premium motion design"
+      ]
+    }
+  ],
+  "rules": {
+    "daily_creative": "Seçilen hizmet için her gün SIFIRDAN üç farklı, somut fikir öner. Bunlardan özgünlüğü ve hizmeti gösterme gücü en yüksek olan TEK fikri seçip YENİ bir sahneye özel video promptu oluştur. Şablondaki örnek sahneyi aynen kopyalama.",
+    "duration": "Konu ve gerçek video aracına göre 8-10, 12-20 veya 20-30 sn; uzun format gerekiyorsa ancak kota onayıyla birden fazla klip.",
+    "visuals": "İnsan ve Türkçe konuşma kullanılabilir; her gün aynı neon/robot/izometrik arayüzü dayatma. Model bozuk Türkçe yazarsa yazıyı sonradan ekle.",
+    "hook": "İlk 1-2 saniyede işletme problemini görünür kıl. Abartılı vaat, clickbait veya garanti kullanma.",
+    "seo": "Bir ana konu ifadesi, iki ilgili arama ifadesi, doğal Türkçe açıklama, 3-5 ilgili etiket, tek DM CTA. 'Keşfet garantisi' yok.",
+    "truth": "Doğrulanmamış yüzde, fiyat, müşteri, resmî kurum bağı, sonuç veya 7/24 çalıştığı test edilmemiş entegrasyon iddiası kullanma.",
+    "freshness": "Yeni tarayıcı sohbeti, yeni üretim tıklaması, üretim öncesi/sonrası medya kimliği ve zaman damgası, yeni indirilen dosyanın SHA-256 doğrulaması zorunlu. Eski videonun indirilmesi GENERATION_NOT_VERIFIED.",
+    "approve": "Video ve caption kullanıcıya gösterilmeden paylaşma. Ücretli API, kredi aşımı veya gerçek Instagram yayınına kendiliğinden geçme."
+  }
+}

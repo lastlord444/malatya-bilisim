@@ -40,10 +40,16 @@ class ApprovalManager:
     ) -> Dict[str, Any]:
         """Record an explicit human approval."""
         path = Path(video_path).resolve()
-        file_hash = self.calculate_file_hash(str(path)) if path.exists() else "no_file"
+        if not path.is_file() or path.stat().st_size == 0:
+            raise FileNotFoundError(f"Onay için gerçek ve boş olmayan video gerekli: {path}")
+        file_hash = self.calculate_file_hash(str(path))
 
         with open(self.approvals_file, "r", encoding="utf-8") as f:
             data = json.load(f)
+
+        old_record = data.get("approved_records", {}).get(content_id)
+        if old_record and old_record.get("published"):
+            raise ValueError("Zaten yayımlanmış içerik yeniden onaylanamaz")
 
         record = {
             "content_id": content_id,
@@ -85,13 +91,15 @@ class ApprovalManager:
             with open(self.approvals_file, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
 
-    def is_approved_and_unaltered(self, content_id: str, video_path: str) -> bool:
-        """Verify that content has approval and the file has not been altered since approval."""
+    def is_approved_and_unaltered(self, content_id: str, video_path: str, caption: Optional[str] = None) -> bool:
+        """Verify original file AND (if provided) the exact approved caption."""
         with open(self.approvals_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         record = data.get("approved_records", {}).get(content_id)
-        if not record or not record.get("approved"):
+        if not record or not record.get("approved") or record.get("published"):
+            return False
+        if caption is not None and caption != record.get("caption"):
             return False
 
         path = Path(video_path).resolve()

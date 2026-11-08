@@ -1,28 +1,47 @@
-# AI VIDEO PROMPT ŞABLONU (9:16 VERTICAL REELS)
+# MALATYA BİLİŞİM — DİNAMİK VİDEO PROMPT TASARIMI v4
 
-## ÇIKTI ŞABLONU:
+BU DOSYA SABİT SAHNE PROMPTU DEĞİLDİR; günün hizmetine, sorununa ve hedef kişisine göre HER GÜN YENİ prompt üretme standardıdır.
+`config/content_strategy.json` ve `runtime/briefs/YYYY-MM-DD.json` kurallarını izle.
 
-### 1. KONSEPT
-- **Hizmet Alanı:** [Sınav Otomasyonu | Modern Web | AI Ajanları | AI Sosyal Medya]
-- **Hedef Kitle:** [Kurum yöneticisi, işletme sahibi, e-ticaret kurucusu]
-- **Kanca (İlk 1 Saniye):** [Şok edici durum, kaos veya görsel durdurucu hareket]
+## A. 3 FİKİR ÜRET, TEKİNİ SEÇ
+Her aday için farklı bir görsel olay/sahne ve farklı bir hook tasarla. 3 fikri seçicilik, doğruluk, özgünlük, markaya uygunluk ve görsel anlaşılabilirlik yönünden değerlendir. Video oluşturma hakkını üç fikrin hepsi için tüketme. En iyi TEK fikri üretime gönder.
 
-### 2. SENARYO (0-8 SANİYE)
-- **00-02 sn:** Kaotik / manuel problem (ör. masaya yığılmış kağıtlar, cevapsız kalan yüzlerce DM)
-- **03-05 sn:** Dönüşüm anı (turkuaz #2DE2E6 ışık hatları, yapay zeka ajanının devreye girmesi, sistemin otomatikleşmesi)
-- **06-08 sn:** Huzurlu ve başarılı sonuç (temiz modern ekran, onaylanmış siparişler, yeşil başarı tikleri)
+## B. KONUYA GÖRE FORMAT
+- SINAV: okul yöneticisinin gerçek yükünü gösteren kısa senaryo, başvuru/sonuç portalının sentetik-demonstrasyonu veya öncesi/sonrası.
+- WEB: gerçekçi mobil site akışı; kullanıcının teklif/randevuya ulaşması. Soyut veri yolları yerine anlaşılır UI.
+- AJAN: izinli iş süreci, talep sınıflandırma ve takip; gerekirse Türkçe konuşan işletme sahibi ve gerçekçi diyalog.
+- SOSYAL: markaya özel fikir → içerik → inceleme → yayın; gerçekçi kreatif ekip işi ve onay kolaylığı.
 
-### 3. VİDEO MODEL PROMPTU (İNGİLİZCE DİREKTİF)
-```text
-Vertical 9:16 aspect ratio, cinematic commercial advertisement for an enterprise tech agency. 
-[Görsel Sahne]: A sleek modern dark executive office in dark navy #0B1020 tone.
-[Eylem/Hareket]: Smooth push-in camera motion. Glowing futuristic cyan-turquoise #2DE2E6 digital particles transform chaotic floating paperwork into a clean, glowing holographic dashboard interface.
-[Aydınlatma & Stil]: Volumetric cinematic studio lighting, photorealistic 8k, Octane render style, crisp reflections, fluid dynamic motion, seamless seamless loop end.
-No blurry artifacts, no low quality, 24fps smooth motion.
-```
+Tek bir ışıklı hologram, robot, evrak uçuşması veya turkuaz çizgi sahnesini her gün tekrar üretme.
 
-### 4. INSTAGRAM BAŞLIK & AÇIKLAMA METNİ
-- **Başlık:** [Merak uyandırıcı net soru veya tespit]
-- **Açıklama:** [Problem, somut çözüm, Malatya Bilişim garantisi]
-- **Eylem Çağrısı (CTA):** "Detaylı bilgi ve ücretsiz analiz için yoruma '[KEYWORD]' yazın veya DM'den bize ulaşın!"
-- **Etiketler:** #malatya #malatyabilisim #yapayzeka #reels #otomasyon
+## C. PROFESYONEL VİDEO PROMPT ÇIKTISI
+Bugünün seçilen fikri için İngilizce veya modelin en iyi izlediği dilde aşağıdaki alanları KONUYA ÖZEL ve SOMUT doldur. Köşeli ayraçları çıktı olarak bırakma:
+1. FORMAT: vertical 9:16; arayüzün gerçek modelinin desteklediği süre/çözünürlük.
+2. SUBJECT: bir somut problem; ana kişi/nesne ve bulunduğu yer.
+3. NARRATIVE: ilk 1-2 saniyede hook, görülebilen problem, ürün/süreç müdahalesi, gözlenebilir fayda.
+4. SHOTS & CAMERA: klip sayısı, ölçek, açı, yalnızca anlamlı kamera/kurgu hareketleri.
+5. PERFORMANCE & MOTION: karakter davranışları, el/nesne sürekliliği, varsa doğal Türkçe diyalog ve lip-sync.
+6. VISUAL STYLE: sahneye uygun fotogerçekçi reklam veya premium UI/3D; tutarlı lacivert/turkuaz/kırık beyaz marka aksanları, zoraki neon değil.
+7. SOUND: konuşma/müzik/SFX ancak hikâyeye katkı sağlıyorsa; telifli eser/ünlü ses taklidi yok.
+8. TEXT: bir kısa Türkçe hook, bir destek; modelin ürettiği tipografi bozuksa sonradan kompozit; logo sadece gerçek dosyadan.
+9. NEGATIVES: garip eller/yüzler, sahte uygulama ekranları, anlamsız yazılar, tutarsız sahne geçişleri, yanlış iddialar.
+10. QC: gerçek çıktıda süre, codec, görüntü, dil, ses, iddia, açıklama ve hesap kontrolü.
+
+Modelin 8-10 saniyelik tek klip üretebildiği gün uzun senaryo gerekiyorsa çok klipli montajı önermeden önce mevcut kota ve üretim maliyetini kontrol et. Ek üretimi otomatik harcama.
+
+## D. CAPTION & REELS ARAMA
+Anahtar kelimeyi doğal ilk cümleye koy. 60-110 kelime civarı, gerçek uygulama faydası, tek CTA (SINAV/WEB/AJAN/SOSYAL), 3-5 ilgili etiket. Spam SEO ve hashtag yığını yok. Malatya konumu içerik için gerçekten uygunsa kullan; her paylaşımda zorunlu değil. Başlık, video ve caption aynı iddiayı taşımalı.
+
+## E. DOSYA VE YAYIN
+Bugünün YENİ Gemini video üretim UI eylemi gözlenmeden video var kabul edilmez; eski MP4 seçme. İndirmeden önce yeni video/konuşma kanıtı gerekir.
+Video tamamlandıysa gerçek Gemini/Flow oynatıcı URL'sini ve indirilen MP4 SHA-256'sını kaydet. Kullanıcıya göster, açık onayı bekle. Upload-Post'a otomatik gönderme. Üretim/indirme/gerçek paylaşım başarılarını birbirine karıştırma.
+
+## F. ÖRNEK DEĞİL, DEĞİŞKEN ÇIKTI
+Her gün şu alanları kendi kararınla yeni değerlerle doldur:
+- content_id, service_id, target_persona, pain_point, visual_metaphor, hook, chosen_format,
+- three_concepts_considered, creative_rationale, prompt_full,
+- model_name_verified, Gemini_chat_or_Flow_URL, duration, aspect_ratio, audio_plan,
+- caption, 3_to_5_hashtags, CTA_keyword,
+- generation_started_at, generation_completed_at, video_sha256, quality_gate_status, approval_status.
+
+Değişken bilgileri uydurma. Video oluşmamışsa alanları null/UNKNOWN bırak.
