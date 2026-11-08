@@ -115,9 +115,16 @@ class ReelsPipeline:
         self.save_history(history)
         return entry
 
-    def ingest_gemini_video(self, dest_filename: str = "gemini_reel_latest.mp4", source_path: Optional[str] = None) -> Dict[str, Any]:
-        """Ingests and validates the latest downloaded Gemini MP4 file."""
-        return self.downloader.ingest_downloaded_video(dest_filename=dest_filename, source_path=source_path)
+    def ingest_gemini_video(
+        self,
+        dest_filename: str = "gemini_reel_latest.mp4",
+        source_path: Optional[str] = None,
+        not_before: Optional[float] = None
+    ) -> Dict[str, Any]:
+        """Ingests a NEW Gemini MP4; caller must supply verified generation start."""
+        return self.downloader.ingest_downloaded_video(
+            dest_filename=dest_filename, source_path=source_path, not_before=not_before
+        )
 
     def _resolve_video_path(self, video_path: str) -> str:
         """Ensures video path is resolved absolutely against project root if relative."""
