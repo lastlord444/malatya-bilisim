@@ -169,12 +169,26 @@ class ReelsPipeline:
                 "error": f"HATA: Bu içerik ({content_id}) daha önce zaten yayımlanmış. Mükerrer yayın engellendi."
             }
 
-        is_approved = self.approval_mgr.is_approved_and_unaltered(content_id, abs_path)
+        # Human approval is for a specific video AND an exact caption.
+        is_approved = self.approval_mgr.is_approved_and_unaltered(content_id, abs_path, caption=caption)
         if not is_approved:
             return {
                 "success": False,
-                "error": "GÜVENLİK ENGELİ: İçerik için geçerli ve değiştirilmemiş insan onayı bulunamadı."
+                "error": "GÜVENLİK ENGELİ: Videoya ve açıklamanın bu sürümüne ait açık onay yok."
             }
+
+        history = self.load_history()
+        matching = next((item for item in history if item.get("content_id") == content_id), None)
+        if matching is None:
+            return {"success": False, "error": "GÜVENLİK ENGELİ: Kayıtsız content_id yayımlanamaz."}
+        # A timeout after an upload does not prove failure. Never automatically re-post.
+        blocking = {"PUBLISHING", "UPLOAD_ACCEPTED_UNVERIFIED", "PUBLISH_UNKNOWN", "YAYIMLANDI"}
+        if matching.get("yayın_durumu") in blocking:
+            return {"success": False, "error": "Yayın durumu belirsiz veya tamamlanmış; tekrar gönderme engellendi."}
+
+        if not dry_run:
+            matching["yayın_durumu"] = "PUBLISHING"
+            self.save_history(history)
 
         result = self.uploader.publish_reel(
             video_path=abs_path,
@@ -184,16 +198,22 @@ class ReelsPipeline:
             dry_run=dry_run
         )
 
-        if result.get("success"):
-            self.approval_mgr.mark_published(content_id, result.get("response"))
-            history = self.load_history()
-            for item in history:
-                if item.get("content_id") == content_id:
-                    item["yayın_durumu"] = "DRY_RUN_BAŞARILI" if dry_run else "YAYIMLANDI"
-                    item["yayın_yanıtı"] = result.get("response")
-                    break
-            self.save_history(history)
-
+        history = self.load_history()
+        for item in history:
+            if item.get("content_id") != content_id:
+                continue
+            if dry_run:
+                # Dry-run validates locally; it never creates a published record.
+                item["yayın_durumu"] = "DRY_RUN_BAŞARILI" if result.get("success") else "DRY_RUN_FAILED"
+            elif result.get("success"):
+                # HTTP 200/201 may only acknowledge intake, not Instagram publication.
+                item["yayın_durumu"] = "UPLOAD_ACCEPTED_UNVERIFIED"
+            else:
+                # Preserve the uncertain state until provider-side reconciliation.
+                item["yayın_durumu"] = "PUBLISH_UNKNOWN"
+            item["yayın_yanıtı"] = result.get("response")
+            break
+        self.save_history(history)
         return result
 
 
