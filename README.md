@@ -1,121 +1,70 @@
-# Malatya Bilişim AI Reels Factory (`malatya-bilisim`)
+# Malatya Bilişim — AI Reels Factory
 
-Malatya Bilişim (@malatyabilisim44) Instagram hesabı için profesyonel, dikey (9:16) Reels içerik üretim, doğrulama, insan onayı, otomatik Gemini indirmesi ve Upload-Post yayın boru hattı.
+Instagram: **@malatyabilisim44** | Kaynak: bu GitHub deposu | İşletim: Windows VDS üzerinde Antigravity'nin Chrome tarayıcı ajanı.
 
-Bu depo her ortamdan (yerel geliştirme, başka bilgisayarlar, Box VPS veya bulut sunucuları) erişilebilir ve birden fazla Google/Gemini hesabı ile çalışabilecek şekilde modüler olarak tasarlanmıştır.
+## Hedef
 
----
+Dört hizmet için **her gün birbirinden farklı kreatif fikir ve video promptunu Antigravity kendi oluşturur**. Mevcut Google AI aboneliğindeki Gemini **Video oluştur** ekranını kullanarak yeni videoyu üretmeyi dener; Gemini'de izlenebilir bağlantıyı ve MP4 dosyasını hazırlar. Kullanıcı açıkça onay vermeden **hiçbir Instagram paylaşımı** yapılmaz.
 
-## 🚀 Proje Yapısı
+Hizmetler: **sınav/bursluluk otomasyonu (SINAV), kurumsal web yazılımı (WEB), AI ajanları (AJAN), sosyal medya otomasyonu (SOSYAL).**
 
-```text
-malatya-bilisim/
-│
-├── config/
-│   ├── brand.json            # Marka stratejisi, renk kodları (#0B1020, #2DE2E6, #F4F7FA), 4 ana hizmet
-│   └── pipeline.json         # Boru hattı ayarları, API uç noktaları, güvenlik eşikleri
-│
-├── prompts/
-│   ├── creative-director.txt # Gemini Kreatif Direktör talimatları ve bağlam koruma kuralları
-│   └── video-generation.txt  # Dikey (9:16) video modelleri (Veo, Wan, LTX) için prompt şablonu
-│
-├── src/
-│   ├── account_manager.py    # Çoklu Google / Gemini hesabı algılama ve yönlendirme yöneticisi
-│   ├── gemini_downloader.py  # Gemini resmî butonundan inen MP4'leri otomatik yakalama ve doğrulama
-│   ├── video_checker.py      # MP4 teknik kontrolü (çözünürlük, 9:16 oranı, süre, codec, ses)
-│   ├── upload_post.py        # Upload-Post REST API adaptörü (multipart/form-data yerel MP4 desteği)
-│   ├── approval.py           # İnsan onayı ve mükerrer yayın koruma yöneticisi (SHA-256)
-│   └── pipeline.py           # Boru hattı orkestratörü (bağlam yönetimi, kayıt, doğrulama, yayın)
-│
-├── notebooks/
-│   └── colab_gpu_test.ipynb  # Colab GPU ve model uygunluk (LTX-Video, Wan 2.1) test defteri
-│
-├── data/
-│   ├── reels_history.json    # Son 30 içeriğin hafif JSON geçmişi (bağlam şişmesini önler)
-│   ├── gemini_reel_9x16.mp4  # 720x1280 9:16 Dikey, H.264/AAC doğrulanmış gerçek Gemini Veo videosu
-│   └── sample_reel.mp4       # 1080x1920 8s H.264 / AAC doğrulanmış test videosu
-│
-├── tests/
-│   ├── test_account_manager.py   # Çoklu hesap yönetimi testleri
-│   ├── test_gemini_downloader.py # Otomatik indirme testleri
-│   ├── test_video_checker.py     # Video teknik doğrulama testleri
-│   ├── test_upload_post.py       # Yayın adaptörü ve güvenlik bariyeri testleri
-│   └── test_approval.py          # İnsan onayı ve dosya bütünlüğü hash testleri
-│
-├── screenshots/              # Tarayıcı üzerinden doğrulanan hesap ve sistem kanıtları
-├── .env.example              # Ortam değişkenleri şablonu (çoklu hesap destekli)
-├── .gitignore                # Güvenlik kuralları (API anahtarları depoya asla girmez)
-├── README.md
-└── SETUP_REPORT.md           # Kapsamlı Faz 1 & Faz 2 kurulum, araştırma ve durum raporu
-```
+Bu depo bir video üretim API'si veya 7/24 çalışan servis değildir. **Günlük planlama script'i çalışır; Gemini UI'yi açıp gerçekten video üretmek Antigravity'nin VDS üzerindeki oturum yetkisine ve Automation'ın çalışmasına bağlıdır.** Bugünkü otomasyon burada etkinleştirilmemiştir. GitHub Actions yalnızca test çalıştırır, Gemini'ye girmez ve Instagram'a göndermez.
 
----
+## VDS'de bir defalık kurulum
 
-## 👥 Farklı Gemini Hesaplarına Yönlendirme (Multi-Account Setup)
-
-Sistem tek bir Google hesabına bağımlı değildir. Farklı bir Google/Gemini hesabı ile çalışmak için iki pratik yöntem bulunur:
-
-### 1. `.env` Üzerinden Hesap İndeksi Belirleme:
-Google Chrome üzerinde birden fazla Google hesabı açıksa:
-- Varsayılan / 1. Hesap: `GEMINI_ACCOUNT_INDEX="0"` -> `https://gemini.google.com/app`
-- 2. Hesap: `GEMINI_ACCOUNT_INDEX="1"` -> `https://gemini.google.com/u/1/app`
-- 3. Hesap: `GEMINI_ACCOUNT_INDEX="2"` -> `https://gemini.google.com/u/2/app`
-
-Ayrıca belirli bir e-posta hedeflenmek istenirse:
-```bash
-GEMINI_TARGET_EMAIL="yeni_hesap@gmail.com"
-```
-
-### 2. Python Kodu ile Dinamik Hesap Yönlendirme:
-```python
-from src.account_manager import GeminiAccountManager
-
-account_mgr = GeminiAccountManager(target_account_index=1)
-url = account_mgr.get_gemini_url() # https://gemini.google.com/u/1/app
-```
-
----
-
-## 🛠️ Kurulum ve Çalıştırma
-
-### 1. Depoyu Klonlayın
-```bash
-git clone https://github.com/lastlord444/malatya-bilisim.git
-cd malatya-bilisim
-```
-
-### 2. Ortam Değişkenlerini Ayarlayın
-`.env.example` dosyasını `.env` olarak kopyalayın:
-```bash
-copy .env.example .env
-```
-
-### 3. Bağımlılıklar
-- Python 3.10+
-- `pip install requests python-dotenv`
-- `ffmpeg` / `ffprobe` (Windows: `winget install Gyan.FFmpeg`, Linux: `sudo apt install ffmpeg`)
-
-### 4. Bütün Testleri Çalıştırma
-```bash
+```powershell
+cd "C:\Users\musab\.gemini\antigravity\scratch\malatya-bilisim"
+git status
+git pull --ff-only origin main
+python -m pip install -r requirements.txt
 python -m unittest discover -s tests -p "test_*.py"
+python -m src.daily_brief
 ```
-*(14 testin tamamı otomatik olarak çalışır ve doğrulanır)*
 
-### 5. Boru Hattı Akışı
-```python
-from src.pipeline import ReelsPipeline
+Günlük brief `runtime/briefs/YYYY-MM-DD.json` içine yazılır. Dosya aynı gün ikinci kez oluşturulmaz; bu, kayıtlarda tekrar oluşma riskini azaltır. Günlük planlayıcı aktif video modelini **çağırmaz**, sadece hizmet seçer, kısa bağlam ve yapılacak iş talimatlarını çıkarır.
 
-pipeline = ReelsPipeline()
+**Antigravity → Automations → New Automation** altında günlük görev oluştur:
 
-# 1. Günlük temiz bağlamı al (bağlam şişmesini engeller)
-context = pipeline.get_clean_daily_context()
+- Adı: `Malatya Bilişim — Günlük Özgün Reels`
+- Proje: `malatya-bilisim`
+- Saat: **09:00 Europe/Istanbul**. Yaklaşık tetikleme zamanıdır, tam dakikaya garanti yok.
+- Her çalışmada yeni ajan oturumu (mevcut sonsuz sohbeti sürdürme).
+- Görev promptu: **[`automations/daily_reels_agent.md`](automations/daily_reels_agent.md)** dosyasının "OTOMASYONUN HER ÇALIŞMASINDA" bölümündeki talimatlar.
+- Önce bir defa **Run Now** ile yeni video üretimi, indirme ve oynatıcı linkini doğrula; gerçek yayını tetikleme.
 
-# 2. Gemini'den inen en son videoyu içeri al ve doğrula
-ingest = pipeline.ingest_gemini_video()
+Antigravity'nin resmi Automations özelliğini kullan; yalnızca oturuma bağlı `/schedule` zamanlayıcısını kalıcı günlük görev sanma. VDS açık, Windows oturumu ve Chrome/Gemini yetkisi çalışır olmalı; uzun süreli güvenilirlik kurulum sonrası ölçülmeli.
 
-# 3. İnsan onayını kaydet
-pipeline.approve_reel("REEL-2026-002", ingest["dest_path"], "Instagram Açıklaması", approver="Yönetici")
+## İçerik motoru
 
-# 4. Güvenli yayını başlat (Öncelikle dry_run=True ile test edin)
-result = pipeline.publish_reel("REEL-2026-002", ingest["dest_path"], "Instagram Açıklaması", dry_run=True)
+- [`config/content_strategy.json`](config/content_strategy.json): 4 hizmet, gerçek karar vericiler, farklı problemler, SEO anahtar kelimeleri ve yasak iddialar.
+- [`src/daily_brief.py`](src/daily_brief.py): son 28 günün kayıtlarından en az işlenen hizmeti seçer, son 30 kısa içerik kaydını verir.
+- [`prompts/creative-director.txt`](prompts/creative-director.txt): hedef, 3 özgün fikirden tek seçim, yeni sahne/prompt üretimi, konuşma/insan/format seçenekleri.
+- [`prompts/video-generation.txt`](prompts/video-generation.txt): değişken, sahneye özel Gemini/Flow prompt modeli, ses, hook, Reels SEO, video QC.
+- [`src/gemini_downloader.py`](src/gemini_downloader.py): Gemini Chrome UI'sinde zaten indirilen medya için dosya aktarımı; **yeni video üretildiğini kendi başına kanıtlamaz**.
+- [`src/video_checker.py`](src/video_checker.py): teknik MP4 metadata kontrolü.
+- [`src/approval.py`](src/approval.py): dosya ve caption için onay kaydı.
+- [`src/upload_post.py`](src/upload_post.py): Upload-Post üzerinden dosya aktarımı; **sadece explicit onay sonrası**.
+- [`src/pipeline.py`](src/pipeline.py): mevcut test ve yayın yönetimi; dry-run gerçek yayımlanma değildir.
+
+Günlük içerikte 8 saniye/insansız/izometrik format artık mecburi değildir. İnsan ve doğal Türkçe konuşma, gerçekçi iş sahnesi, UI animasyonu ve çeşitli klip uzunluğu kullanılabilir. Gerçek model süresi ve abonelik kotası geçerlidir; otomasyon hakları aşarak üretim denemesi yapmamalıdır.
+
+## Statüler ve teslim
+
+`BRIEF_READY_NOT_GENERATED` → `GENERATION_STARTED` → `GENERATION_VERIFIED` → `DOWNLOADED_AND_QC_PASSED` → `AWAITING_APPROVAL` → (açık onayla) `PUBLISHING` → `UPLOAD_ACCEPTED_UNVERIFIED` → (uzak sağlayıcıyla doğrulanırsa) `PUBLISHED`.
+
+Model promptu yazdıysa `GENERATION_VERIFIED` yazılmaz. Eski videoyu indirmek yeni video değildir. Upload-Post 200 döndürdüyse, Instagram'da yayınlandığını doğrulamadan `PUBLISHED` yazılmaz. Ağ belirsizliğinde otomatik yeniden gönderme yapma; mükerrer yayın riski vardır. CLI dry-run asla yayımlanmış olarak işaretlememeli.
+
+## Güvenlik — ÖNEMLİ
+
+Bu GitHub deposu **public**. Daha önce **video dosyaları, kişisel hesap ve Upload-Post ekran görüntüleri, gerçek içerik geçmişi** git'e eklenmiş. Güncellenen `.gitignore` yeni medya ve ekran görüntülerini engeller, fakat **zaten takip edilen dosyaları geri çekmez**; önceki Git commit geçmişinde de kalırlar. Kayıtları ve ekran görüntülerini koruma/temizleme kararı ayrıca verilmeli. API anahtarı veya oturum çerezi açığa çıkmışsa derhal yenilenmeli.
+
+Gelecekte `.env`, `data/*.mp4`, `screenshots/`, `runtime/`, `data/approvals.json` ve özel kullanıcı kayıtlarını public depoya ekleme. Gerçek videolar VDS diskinde/özel depolamada kalsın; Git yalnızca kod ve anonimleştirilmiş konfigürasyonu taşısın.
+
+## Test ve kabul
+
+```powershell
+python -m unittest discover -s tests -p "test_*.py" -v
+python -m src.daily_brief --date 2026-11-10
 ```
+
+GitHub CI aynı testleri ücretli medya üretimi veya paylaşımı yapmadan çalıştırır. Kod testlerinin geçmesi gerçek Gemini tarayıcı/video üretimi ya da gerçek Instagram yayınının kanıtı değildir.
