@@ -125,11 +125,11 @@
     "görsel_yaklaşım": "Yığılmış optik formlar ve susmayan telefonlardan Malatya Bilişim bulut sınav paneline geçiş, tek tıkla veli SMS bildirimleri (#0B1020 & #2DE2E6)",
     "ses_konusma_türü": "Sinematik fon müziği ve arayüz bildirim sesleri (AAC Audio)",
     "üretim_modeli": "Google Gemini (Veo Video Engine)",
-    "video_dosyası": "data/MB44_20261108_EXAM_v1.mp4",
-    "sha256": "043424686BBECBB2BD185F127EB643ABAFC2D227270E921664487792486D9D79",
+    "video_dosyası": "data/MB44_20261108_EXAM_v2.mp4",
+    "sha256": "977A1188A2F48524A4128981F5A8D5C29952C8B0B3DFE1B0597FC61BB3354017",
     "generation_start": "2026-11-08T18:13:23",
     "generation_end": "2026-11-08T18:15:03",
-    "duration_seconds": 20.03,
+    "duration_seconds": 10.04,
     "resolution": "720x1280 (9:16)",
     "codec": "h264 / aac",
     "gemini_sohbet_baglantisi": "https://gemini.google.com/app/2deb9a5924d768b5",
@@ -159,15 +159,25 @@
     "instagram_gönderi_kimliği": null,
     "video_teknik_rapor": {
       "is_valid": true,
-      "file_size_bytes": 7958258,
-      "file_size_mb": 7.59,
+      "file_size_bytes": 3005615,
+      "file_size_mb": 2.87,
       "resolution": "720x1280",
-      "duration": 20.03,
+      "duration": 10.04,
       "codec": "h264",
       "has_audio": true,
       "is_9_16_vertical": true,
       "errors": [],
       "warnings": []
-    }
+    },
+    "visual_qc_status": "PASS",
+    "visual_qc_issues": [
+      "0-10s: Farklı bir web reklamı (iki servis birleşmiş)",
+      "10-20s: Sınav otomasyonu reklamı (sahne devamlılığı kopuk)",
+      "Telefon tutuşu ve oyuncunun bakış açısı fiziksel olarak doğal değil",
+      "Gerçekliği doğrulanmamış uydurma ürün arayüzleri"
+    ],
+    "video_dosyası_v1_reddedilen": "data/MB44_20261108_EXAM_v1.mp4",
+    "v1_durumu": "VISUAL_QC_FAILED",
+    "visual_qc_notes": "Tek plan akıcı kamera süzülmesi. 0-3s: Yönetici masasında optik formlar ve çalan telefon. 3-7s: Omuz üstü kamerayla laptop ekranındaki Malatya Bilişim Sınav Otomasyonu paneline geçiş (Sonuç Bildirimleri İletildi yeşil rozeti). 7-10s: Yöneticinin rahatlayarak arkasına yaslanması ve güvenli tebessümü. Fiziksel tutarlılık kusursuz."
   }
 ]
