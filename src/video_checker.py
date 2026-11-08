@@ -54,8 +54,9 @@ class VideoChecker:
         if probe_data:
             self._parse_probe_data(probe_data, result)
         else:
-            # Fallback to basic binary inspection if ffprobe is unavailable
+            # Container signatures are not proof of a playable video.
             self._fallback_mp4_inspect(path, result)
+            result["errors"].append("FFprobe ile oynatılabilir medya doğrulanamadı; yayın engellendi.")
 
         # Evaluate validity criteria for Instagram Reels
         if result["width"] > 0 and result["height"] > 0:
@@ -66,14 +67,21 @@ class VideoChecker:
                 result["aspect_ratio"] = "9:16"
             else:
                 result["aspect_ratio"] = f"{result['width']}:{result['height']}"
-                result["warnings"].append(
-                    f"Video tam 9:16 dikey değil ({result['aspect_ratio']}). Reels için 9:16 önerilir."
+                result["errors"].append(
+                    f"Video 9:16 değil ({result['aspect_ratio']}); Reels için dikey medya gerekli."
                 )
 
         if not result["has_audio"]:
             result["warnings"].append("Video ses akışı içermiyor (sessiz video).")
 
-        if len(result["errors"]) == 0 and result["file_size_bytes"] > 0:
+        if result["duration_seconds"] <= 0:
+            result["errors"].append("Video süresi doğrulanamadı.")
+        if result["video_codec"] not in ("h264", "avc1"):
+            result["errors"].append(f"Desteklenmeyen/doğrulanamayan video codec: {result['video_codec']}")
+        if result["width"] < 720 or result["height"] < 1280:
+            result["errors"].append("Video en az 720x1280 olmalı.")
+
+        if len(result["errors"]) == 0 and result["file_size_bytes"] > 0 and result["is_9_16_vertical"]:
             result["is_valid"] = True
 
         return result
