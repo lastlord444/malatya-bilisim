@@ -45,3 +45,27 @@ Her gün şu alanları kendi kararınla yeni değerlerle doldur:
 - generation_started_at, generation_completed_at, video_sha256, quality_gate_status, approval_status.
 
 Değişken bilgileri uydurma. Video oluşmamışsa alanları null/UNKNOWN bırak.
+
+
+## G. ZORUNLU GÖRSEL YÖNETMENLİK VE KAMERA BLOKLAMA (v5 — KRİTİK)
+Bu kurallar kullanıcının 8 Kasım videolarındaki hatalardan çıkarılmış zorunlu kalite kapılarıdır:
+
+1. **Tek video = tek hizmet ve tek hikâye.** Sınav otomasyonu videosunun başında web sitesi performans çizelgesi, satış grafiği, alakasız telefon demonstrasyonu veya başka günün videosundan görüntü OLAMAZ. Önceden üretilmiş klipleri otomatik birleştirme. Birleştirme ancak tüm klipler o günün aynı storyboard'una göre üretilmişse, karakter/mekân/ürün devamlılığı doğrulanmışsa yapılabilir.
+2. **Fiziksel mantık zorunlu.** Telefona bakan kişi telefon ekranını kendi yüzüne çevirir; ekranı kameraya göstermek için telefonu çevirirse kendisinin ekrana baktığını iddia eden oyunculuk yapmaz. Ekranı izleyiciye göstermek gerekiyorsa *over-the-shoulder* (omuz üzerinden) ya da gerçekçi ekran kaydı kullan. Eller, parmaklar, cihazın önü/arkası ve bakış yönü fiziksel olarak tutarlı kalmalı. Yapay ürün gösterme hareketleri (kameraya telefon tutup anlamsız gülümseme) kullanma.
+3. **İzlenebilir sahne planı:** Her prompt yalnızca "cinematic / 8K / smooth transition" sıfatlarından oluşamaz. `shot_id`, süre, kompozisyon, aktörün **neye baktığı**, kameranın nerede olduğu, aksiyon, ekranda ne göründüğü, gerekirse konuşma, önceki/sonraki sahne bağı açık olmalı.
+4. **Çok klipli kurgu:** 10+ saniyede her klibi bağımsız üretmek gerekiyorsa önce tam storyboard kur; klipler arasında aynı hizmet, aynı karakter, aynı kurgu dünyası, tutarlı mekân ve anlatım korunmalı. Birbirinden bağımsız iki video art arda konarak 20 saniyelik "başarılı" reklam oluşturulamaz.
+5. **Ürün doğruluğu:** Gerçek uygulama ekran görüntüsü sağlanmamışsa Gemini'nin uydurduğu "Malatya Bilişim" panelini **gerçek ürün ekranımız gibi** pazarlama. Gerçek UI referans yoksa genel temsili canlandırma göster; uygulama yazılarını/gerçek markayı sonradan kontrol edilerek ekle. Rastgele leaderboard, sipariş sayısı ve WhatsApp bildirimi üretme.
+6. **İddia kontrolü:** "sıfır hata", "sıfır telefon trafiği", "anında yüzlerce SMS", "garantili dönüşüm" ve benzeri mutlak vaatler kanıt yoksa yasak. Araçta desteklenmeyen bir hizmeti varmış gibi gösterme.
+7. **Gerçek çözünürlük:** "photorealistic 8k" gibi modelin sunmadığı çözünürlüğü kalite delili sayma. Kaynak 720×1280 ise 720×1280 raporla; büyütmeyi gerçek 8K olarak sunma.
+
+## H. GÖRSEL STORY QA — METADATA QC'DEN AYRI, ZORUNLU
+Final MP4 için en az her 2 saniyeden bir gerçek kare çıkarıp **tamamını sırayla görsel olarak incele**; mümkünse video+sesin tamamını oynat. Özellikle 0–2 sn ve klip birleşme sınırları. Gözden geçirme listesi:
+- [ ] İlk 2 saniyeden itibaren **yalnızca seçilen hizmet** konu ediliyor.
+- [ ] Sahne geçişleri hikâyeyi taşıyor; alakasız iki farklı videonun arka arkaya eklenmesi yok.
+- [ ] İnsan/nesne/telefon/laptop fiziği doğal: tutuş, yönelim, parmaklar, bakış, ekran okunurluğu.
+- [ ] Çözüme ait ekranlar ve mesajlar sahte ürün vaatleri içermiyor.
+- [ ] Türkçe, logolar, ses, diyalog, açıklama ve görseldeki iddialar birbiriyle tutarlı.
+- [ ] Video izleyicide belirgin problem → çözüm duygusu yaratıyor; genel stok reklam hissi vermiyor.
+- [ ] Sonuç yalnızca video metadata "is_valid: true" değil, insan gözüyle kontrol edilmiş `visual_qc_status`.
+
+Herhangi biri başarısızsa `VISUAL_QC_FAILED` işaretle; **AWAITING_APPROVAL / READY_TO_PUBLISH** deme. Başarısızlığı açıklayan zaman damgalarını yaz ve kusurlu videoyu Instagram'a gönderme. Tamir edilemeyen sahne için yalnızca ilgili klibi yeniden üret; ek kullanım hakkı harcamadan önce kota ve kullanıcı iznini kontrol et.
