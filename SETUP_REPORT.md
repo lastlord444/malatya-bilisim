@@ -1,3 +1,5 @@
+> **DURUM GÜNCELLEMESİ — 8 Kasım 2026 / GitHub revizyonu:** Bu belgedeki Faz 1–2 sonuçları VDS'deki önceki Antigravity denemesine aittir. Yalnızca eski Gemini videosunu indirmek YENİ günlük video üretimi değildir. Günlük dört hizmete göre kısa brief üretimi `src/daily_brief.py` ile hazırlanmıştır; fakat **Antigravity Automations VDS'de henüz bu GitHub değişiklikleriyle etkinleştirilmedi ve yeni video UI akışı uçtan uca yeniden doğrulanmadı**. `automations/daily_reels_agent.md` talimatı Automations'a bağlanmalıdır. Upload-Post dry-run gerçek Instagram yayını değildir. Video/screenshot/history dosyaları public depoda önceden takip edilmiş; yeni `.gitignore` eski commitleri kaldırmaz. Güvenli birim testleri GitHub Actions ile ayrıca kontrol edilir.
+
 # MALATYA BİLİŞİM AI REELS FACTORY — FAZ 2: GERÇEK VİDEO ÜRETİMİ VE AKTARIM DOĞRULAMA RAPORU
 
 **Tarih:** 8 Kasım 2026  
