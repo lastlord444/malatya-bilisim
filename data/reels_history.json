@@ -60,5 +60,58 @@
       "duration": 10.03,
       "codec": "h264"
     }
+  },
+  {
+    "content_id": "2026-11-08_MB44_WEB_v1",
+    "tarih": "2026-11-08",
+    "konu": "Kurumsal Web Yazılımı & Yüksek Dönüşümlü Web Siteleri",
+    "hedef_kitle": "KOBİ sahipleri, şirket yöneticileri, kurumsal web isteyen firmalar",
+    "hook": "Web siteniz var. Peki neden müşteri gelmiyor?",
+    "hizmet": "Özel Web Tasarımı ve Yazılımları (CTA: WEB)",
+    "video_formatı": "Format C / E — Problem ve Çözümü Gösteren Gerçekçi İş Senaryosu",
+    "görsel_yaklaşım": "Modern sinematik reklam estetiği, Koyu Lacivert (#0B1020) & Canlı Turkuaz (#2DE2E6)",
+    "ses_konusma_türü": "Doğal ortam ve arayüz ses akışı (AAC Audio)",
+    "üretim_modeli": "Google Gemini (Veo Video Engine)",
+    "video_dosyası": "data/2026-11-08_MB44_WEB_v1.mp4",
+    "sha256": "C15AB8C3146F1B9913F0E9E0153009313C15069D96248299F979FDDB3AFEF883",
+    "generation_start": "2026-11-08T17:21:43",
+    "generation_end": "2026-11-08T17:23:08",
+    "duration_seconds": 10.03,
+    "resolution": "720x1280 (9:16)",
+    "codec": "h264 / aac",
+    "gemini_sohbet_baglantisi": "https://gemini.google.com/app/2deb9a5924d768b5",
+    "caption": "Web siteniz var ama telefonunuz çalmıyor mu? 2010'dan kalma, mobilde açılmayan yavaş siteler müşterilerinizi kaçırıyor. Malatya Bilişim ile işletmenize özel ultra hızlı, dönüşüm odaklı modern web platformuna geçin. Detaylar ve ücretsiz analiz için yoruma WEB yazın! 🚀\n\n#malatya #malatyabilisim #webveotomasyon #kurumsalweb #dijitaldönüşüm #webyazılım",
+    "seo_metadata": {
+      "primary_keyword": "kurumsal web tasarım",
+      "secondary_keywords": [
+        "işletme web yazılımı",
+        "mobil uyumlu web sitesi",
+        "hızlı web platformu"
+      ],
+      "target_cta": "WEB",
+      "hashtags": [
+        "#malatya",
+        "#malatyabilisim",
+        "#webveotomasyon",
+        "#kurumsalweb",
+        "#dijitaldönüşüm",
+        "#webyazılım"
+      ]
+    },
+    "onerilen_yayin_saati": "19:30 (A/B Test Penceresi: 18.30-21.30 Europe/Istanbul)",
+    "üretim_durumu": "TAMAMLANDI_VE_DOGRULANDI",
+    "kullanıcı_onayı": false,
+    "yayın_durumu": "AWAITING_APPROVAL",
+    "instagram_gönderi_kimliği": null,
+    "video_teknik_rapor": {
+      "is_valid": true,
+      "resolution": "720x1280",
+      "duration": 10.03,
+      "codec": "h264",
+      "has_audio": true,
+      "is_9_16_vertical": true,
+      "errors": [],
+      "warnings": []
+    }
   }
 ]

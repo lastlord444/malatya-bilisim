@@ -15,9 +15,13 @@ class GeminiAccountManager:
     """Manages active Google/Gemini session detection and multi-account navigation."""
 
     def __init__(self, target_account_index: Optional[int] = None, target_email: Optional[str] = None):
-        env_index = os.getenv("GEMINI_ACCOUNT_INDEX")
-        self.target_account_index = int(env_index) if env_index and env_index.isdigit() else (target_account_index or 0)
-        self.target_email = target_email or os.getenv("GEMINI_TARGET_EMAIL", "").strip()
+        if target_account_index is not None:
+            self.target_account_index = target_account_index
+        else:
+            env_index = os.getenv("GEMINI_ACCOUNT_INDEX")
+            self.target_account_index = int(env_index) if env_index and env_index.isdigit() else 0
+
+        self.target_email = target_email if target_email is not None else os.getenv("GEMINI_TARGET_EMAIL", "").strip()
 
     def get_gemini_url(self, account_index: Optional[int] = None) -> str:
         """Returns the appropriate Gemini URL for the requested account index."""

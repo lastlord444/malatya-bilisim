@@ -43,8 +43,8 @@
     "typography": "Okunabilir, modern sans-serif Türkçe tipografi, üst-orta güvenli alan",
     "video_standards": {
       "aspect_ratio": "9:16",
-      "resolution": "1080x1920",
-      "duration_seconds": 8,
+      "resolution": "720x1280 or 1080x1920",
+      "duration_seconds": "8-30 (flexible based on narrative)",
       "format": "MP4",
       "video_codec": "h264",
       "audio_codec": "aac"
