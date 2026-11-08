@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env
+venv/
+env/
+.pytest_cache/
+
+# Local credentials & sensitive data
+data/approvals.json
+data/test_*.mp4
+
+# OS files
+Thumbs.db
+.DS_Store
+*.crdownload

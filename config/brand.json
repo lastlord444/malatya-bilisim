@@ -1,0 +1,53 @@
+{
+  "brand_name": "Malatya Bilişim",
+  "instagram_account": "@malatyabilisim44",
+  "followers": 405,
+  "service_pillars": [
+    {
+      "id": "exam_automation",
+      "name": "Sınav ve Sonuç Otomasyonları",
+      "description": "Sınav, bursluluk, yerleştirme, sonuç sorgulama ve veli SMS otomasyonları",
+      "cta_keyword": "SINAV"
+    },
+    {
+      "id": "web_development",
+      "name": "Modern Web Tasarımı ve Yazılımları",
+      "description": "İşletmelere özel yüksek hızlı, dönüşüm odaklı modern web platformları",
+      "cta_keyword": "WEB"
+    },
+    {
+      "id": "ai_agents",
+      "name": "Yapay Zekâ Ajanları ve İş Süreçleri",
+      "description": "7/24 müşteri yanıtlayan, randevu oluşturan ve operasyonları otomatikleştiren AI çalışanlar",
+      "cta_keyword": "AJAN"
+    },
+    {
+      "id": "social_media_ai",
+      "name": "AI Destekli Sosyal Medya Yönetimi",
+      "description": "İşletmelere özel otomatik Reels, içerik ve büyüme boru hatları",
+      "cta_keyword": "SOSYAL"
+    }
+  ],
+  "strictly_out_of_scope": [
+    "Bilgisayar tamiri",
+    "Format atma",
+    "Veri kurtarma",
+    "Donanım ve yedek parça satışı"
+  ],
+  "visual_identity": {
+    "colors": {
+      "dark_navy": "#0B1020",
+      "vibrant_turquoise": "#2DE2E6",
+      "off_white": "#F4F7FA"
+    },
+    "typography": "Okunabilir, modern sans-serif Türkçe tipografi, üst-orta güvenli alan",
+    "video_standards": {
+      "aspect_ratio": "9:16",
+      "resolution": "1080x1920",
+      "duration_seconds": 8,
+      "format": "MP4",
+      "video_codec": "h264",
+      "audio_codec": "aac"
+    }
+  }
+}

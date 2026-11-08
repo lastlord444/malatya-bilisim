@@ -1,0 +1,28 @@
+# AI VIDEO PROMPT ŞABLONU (9:16 VERTICAL REELS)
+
+## ÇIKTI ŞABLONU:
+
+### 1. KONSEPT
+- **Hizmet Alanı:** [Sınav Otomasyonu | Modern Web | AI Ajanları | AI Sosyal Medya]
+- **Hedef Kitle:** [Kurum yöneticisi, işletme sahibi, e-ticaret kurucusu]
+- **Kanca (İlk 1 Saniye):** [Şok edici durum, kaos veya görsel durdurucu hareket]
+
+### 2. SENARYO (0-8 SANİYE)
+- **00-02 sn:** Kaotik / manuel problem (ör. masaya yığılmış kağıtlar, cevapsız kalan yüzlerce DM)
+- **03-05 sn:** Dönüşüm anı (turkuaz #2DE2E6 ışık hatları, yapay zeka ajanının devreye girmesi, sistemin otomatikleşmesi)
+- **06-08 sn:** Huzurlu ve başarılı sonuç (temiz modern ekran, onaylanmış siparişler, yeşil başarı tikleri)
+
+### 3. VİDEO MODEL PROMPTU (İNGİLİZCE DİREKTİF)
+```text
+Vertical 9:16 aspect ratio, cinematic commercial advertisement for an enterprise tech agency. 
+[Görsel Sahne]: A sleek modern dark executive office in dark navy #0B1020 tone.
+[Eylem/Hareket]: Smooth push-in camera motion. Glowing futuristic cyan-turquoise #2DE2E6 digital particles transform chaotic floating paperwork into a clean, glowing holographic dashboard interface.
+[Aydınlatma & Stil]: Volumetric cinematic studio lighting, photorealistic 8k, Octane render style, crisp reflections, fluid dynamic motion, seamless seamless loop end.
+No blurry artifacts, no low quality, 24fps smooth motion.
+```
+
+### 4. INSTAGRAM BAŞLIK & AÇIKLAMA METNİ
+- **Başlık:** [Merak uyandırıcı net soru veya tespit]
+- **Açıklama:** [Problem, somut çözüm, Malatya Bilişim garantisi]
+- **Eylem Çağrısı (CTA):** "Detaylı bilgi ve ücretsiz analiz için yoruma '[KEYWORD]' yazın veya DM'den bize ulaşın!"
+- **Etiketler:** #malatya #malatyabilisim #yapayzeka #reels #otomasyon

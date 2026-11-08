@@ -1,0 +1,30 @@
+{
+  "pipeline_name": "malatyabilisim-ai-reels",
+  "version": "1.0.0",
+  "storage": {
+    "history_file": "data/reels_history.json",
+    "video_vault_dir": "videos",
+    "max_history_items": 30
+  },
+  "upload_post": {
+    "api_base_url": "https://api.upload-post.com/api",
+    "upload_endpoint": "https://api.upload-post.com/api/upload",
+    "default_user": "default",
+    "default_platform": "instagram",
+    "request_timeout_seconds": 120,
+    "max_retries": 3
+  },
+  "approval": {
+    "require_human_confirmation": true,
+    "allow_cli_prompt": true,
+    "allow_file_token": true
+  },
+  "video_validation": {
+    "allowed_containers": [".mp4", ".mov"],
+    "min_duration_seconds": 3.0,
+    "max_duration_seconds": 60.0,
+    "target_aspect_ratio": "9:16",
+    "min_width": 720,
+    "min_height": 1280
+  }
+}
