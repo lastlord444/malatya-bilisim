@@ -36,6 +36,24 @@ class TestGeminiDownloader(unittest.TestCase):
         self.assertIsNotNone(latest)
         self.assertEqual(latest.name, "gemini_generated_video_12345678.mp4")
 
+    def test_automatic_ingest_requires_verified_start_marker(self):
+        sample = Path(self.temp_downloads) / "gemini_generated_video_new.mp4"
+        sample.write_bytes(b"dummy video")
+        result = self.manager.ingest_downloaded_video(dest_filename="new.mp4")
+        self.assertFalse(result["success"])
+        self.assertIn("not_before", result["error"])
+
+    def test_does_not_reuse_video_from_before_generation(self):
+        import time
+        sample = Path(self.temp_downloads) / "gemini_generated_video_old.mp4"
+        sample.write_bytes(b"old")
+        past = time.time() - 300
+        os.utime(sample, (past, past))
+        found = self.manager.find_latest_gemini_video(
+            max_age_seconds=3600, not_before=time.time() - 30
+        )
+        self.assertIsNone(found)
+
     def test_ingest_downloaded_video(self):
         sample = Path(self.temp_downloads) / "gemini_generated_video_abcdef12.mp4"
         sample.write_bytes(b"mp4 content test bytes")
