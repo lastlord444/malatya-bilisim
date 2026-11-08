@@ -44,7 +44,8 @@ class TestGeminiDownloader(unittest.TestCase):
             dest_filename="ingested_reel.mp4",
             source_path=str(sample)
         )
-        self.assertTrue(res["success"])
+        # A dummy byte string is NOT a playable video; do not mark it as PASS.
+        self.assertFalse(res["success"])
         self.assertEqual(res["file_name"], "ingested_reel.mp4")
         self.assertTrue(Path(res["dest_path"]).exists())
 
