@@ -1,18 +1,36 @@
-# Python
+# Python and editor
 __pycache__/
 *.py[cod]
-*$py.class
-*.env
-.env
 venv/
+.venv/
 env/
 .pytest_cache/
-
-# Local credentials & sensitive data
+.mypy_cache/
+*.log
+# Credentials and browser profiles (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.crdownload
+**/Cookies
+**/Login Data
+**/Local State
+# Private operational state and generated media
+runtime/
+videos/
 data/approvals.json
-data/test_*.mp4
-
-# OS files
+data/*history*.json
+data/*.mp4
+data/*.mov
+data/*.webm
+data/*.mp3
+data/*.wav
+data/*.png
+data/*.jpg
+screenshots/
+# OS
 Thumbs.db
 .DS_Store
-*.crdownload
