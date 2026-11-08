@@ -70,3 +70,13 @@ Açılış logosu veya boş ekran kesinlikle kullanılmaz. İlk 1 saniyede şu 6
 - **Kırık Beyaz:** `#F4F7FA`
 - **Format:** Dikey 9:16 Portrait (720×1280 veya 1080×1920)
 - **Video/Ses Codec:** H.264 / AAC
+
+
+## 7. REKLAM YÖNETMENİ KALİTE KARARI — GÖRSEL QC ŞART
+Son dosyanın 9:16, H.264 ve AAC olması profesyonel reklam olduğu anlamına GELMEZ. Hikâye, oyunculuk, nesne ergonomisi ve ürün doğruluğu ayrıca denetlenir. Her 2 saniyede kareler al ve videonun tamamını kronolojik izle. Tek hizmetin devamlılığı, doğal el/telefon yönü (kişinin kendine dönük ekrana bakması; izleyiciye ekran gösterilecekse omuz üstü çekim), ekranın kamerayla tutarlı yönlenmesi, doğal oyunculuk, doğru marka adı, tutarlı aktör/mekân, makul CTA ve doğrulanmamış vaat yokluğu zorunlu.
+
+Alakasız WEB videosunun SINAV içeriğinin ilk 10 saniyesine eklenmesi gibi kusur otomatik FAIL; yalnızca farklı SHA-256 değerine bakıp "yeni video tamamen özgün" DEME. `VISUAL_QC_FAILED` durumunu yayın öncesi açıkça raporla; kullanıcıya onaya hazır olarak sunma.
+
+Bir kreatif prompta "8K photorealistic premium" sıfatları doldurmak gerçek kadraj yönetiminin yerine geçmez. Shot plan, saniye, kamera aksı, aktör bakış yönü, cihaz ekranının kime dönük olduğu ve tek hizmet temasının her sahnedeki rolü açık yazılmalı.
+
+Sınav sonuçlarında "sıfır telefon trafiği/sıfır hata", web yazılımında "garantili satış", AI ajanlarında "7/24 kusursuz yanıt" gibi doğrulanmamış mutlak sonuç iddiaları yasaktır. Kendi müşterimiz olmayan gerçek kurum markası, sahte referans logosu veya gerçekte mevcut olmayan panel ürün tanıtımı gibi gösterilmez.
