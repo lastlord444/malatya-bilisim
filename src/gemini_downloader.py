@@ -6,6 +6,7 @@ Handles detection, integrity verification, and relocation of MP4 files downloade
 import os
 import time
 import shutil
+import hashlib
 from pathlib import Path
 from typing import Dict, Any, Optional
 from .video_checker import VideoChecker
@@ -21,29 +22,25 @@ class GeminiDownloadManager:
         self.target_dir.mkdir(parents=True, exist_ok=True)
         self.checker = VideoChecker()
 
-    def find_latest_gemini_video(self, max_age_seconds: int = 3600) -> Optional[Path]:
-        """Finds the most recently downloaded Gemini MP4 file."""
+    def find_latest_gemini_video(self, max_age_seconds: int = 3600, not_before: Optional[float] = None) -> Optional[Path]:
+        """Return a Gemini-named MP4 downloaded AFTER verified generation started."""
         if not self.downloads_dir.exists():
             return None
 
-        # Look for gemini_generated_video_*.mp4 or newly downloaded MP4 files
+        # Never take an arbitrary older MP4 from Downloads as today's new Gemini clip.
         candidates = list(self.downloads_dir.glob("gemini_generated_video_*.mp4"))
-        if not candidates:
-            # Fallback to general mp4 files
-            candidates = list(self.downloads_dir.glob("*.mp4"))
 
         if not candidates:
             return None
 
         # Sort by modification time descending
         candidates.sort(key=lambda p: p.stat().st_mtime, reverse=True)
-        latest = candidates[0]
-
-        # Check age
-        file_age = time.time() - latest.stat().st_mtime
-        if file_age <= max_age_seconds:
-            return latest
-
+        for candidate in candidates:
+            modified = candidate.stat().st_mtime
+            if not_before is not None and modified < not_before:
+                continue
+            if 0 <= time.time() - modified <= max_age_seconds:
+                return candidate
         return None
 
     def wait_for_download_completion(self, file_path: Path, timeout_seconds: int = 30) -> bool:
@@ -70,12 +67,15 @@ class GeminiDownloadManager:
     def ingest_downloaded_video(
         self,
         dest_filename: str = "gemini_reel_latest.mp4",
-        source_path: Optional[str] = None
+        source_path: Optional[str] = None,
+        not_before: Optional[float] = None
     ) -> Dict[str, Any]:
         """
         Relocates downloaded Gemini video to project data directory and verifies its technical specs.
         """
-        source = Path(source_path) if source_path else self.find_latest_gemini_video()
+        if not source_path and not_before is None:
+            return {"success": False, "error": "Yeni üretim başlangıç zamanı (not_before) zorunlu; eski video otomatik alınamaz.", "video_path": None}
+        source = Path(source_path) if source_path else self.find_latest_gemini_video(not_before=not_before)
 
         if not source or not source.exists():
             return {
@@ -92,7 +92,10 @@ class GeminiDownloadManager:
                 "video_path": None
             }
 
+        # Unique content_id filenames prevent a later run from silently replacing approved media.
         dest = self.target_dir / dest_filename
+        if dest.exists():
+            return {"success": False, "error": f"Hedef MP4 zaten var (üzerine yazılmadı): {dest}", "video_path": str(dest)}
         shutil.copy2(source, dest)
 
         # Inspect the copied file
@@ -103,6 +106,7 @@ class GeminiDownloadManager:
             "source_path": str(source),
             "dest_path": str(dest),
             "file_name": dest.name,
+            "sha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
             "file_size_bytes": report["file_size_bytes"],
             "file_size_mb": report["file_size_mb"],
             "technical_report": report,
