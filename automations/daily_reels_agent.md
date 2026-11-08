@@ -27,3 +27,9 @@ Otomasyonu bir kez **Run Now** ile çalıştır. Yalnızca yeni video üretildi�
 
 ## HER GÜNÜN KISA RAPORU
 Tarih, hizmet, seçilen özgün fikrin kısa özeti, gerçekten tıklanan Create Video aracı, üretilen yeni media ID/URL, MP4 SHA-256, dosyanın teknik bilgileri, kullanılan üretim kotası (biliniyorsa), `AWAITING_APPROVAL` veya kesin hata kodu. Bir gün başarısızsa ertesi gün kendiliğinden geçmiş MP4'ü sunma.
+
+
+## GÖRSEL QC GÜVENLİK KAPISI (2026-11-08 HATA DÜZELTMESİ)
+ÖNEMLİ: Önceki 20 saniyelik video ilk 10 saniye alakasız telefonla web sitesi anlatımı, sonraki 10 saniye sınav otomasyonu oldu. Bu video visual QA'de FAIL; codec ve çözünürlük PASS olması yeterli değildir. Telefonu kameraya uzatıp kendi ekranına bakıyormuş gibi davranmak gibi fiziksel tutarsızlıklar reddedilir.
+
+Her yeni MP4 için `python -m src.visual_review --video "<dosya.mp4>"` komutuyla zaman etiketli inceleme kareleri çıkar. Dosyadaki kareleri 0, 2, 4, ... saniye boyunca tek tek GÖRSEL olarak incele; önemli hikâye dönüm noktalarında ara kareleri ve sesli videoyu da kontrol et. Kod yalnızca kare çıkarmaya yarar, anlam denetimini sen yaparsın. Kurgunun 0-10 saniyesi WEB, 10-20 saniyesi SINAV ise `VISUAL_QC_FAILED` ve zaman damgalarını raporla. Yanlış kamera açısı, aktörün bakışıyla çelişen telefon yönü, gerçek olmayan UI, bozuk logo, aşırı vaat ve kontrolsüz sahne değişikliği de FAIL. `AWAITING_APPROVAL` durumuna ancak hem metadata hem visual QC geçtikten sonra gir. Hatalı videoyu paylaşma. Kullanıcı ek kullanım hakkı izni olmadan tekrar render harcama.
