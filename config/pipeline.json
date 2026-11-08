@@ -1,6 +1,6 @@
 {
   "pipeline_name": "malatyabilisim-ai-reels",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "storage": {
     "history_file": "data/reels_history.json",
     "video_vault_dir": "videos",
@@ -12,19 +12,42 @@
     "default_user": "default",
     "default_platform": "instagram",
     "request_timeout_seconds": 120,
-    "max_retries": 3
+    "max_retries": 0
   },
   "approval": {
     "require_human_confirmation": true,
     "allow_cli_prompt": true,
-    "allow_file_token": true
+    "allow_file_token": true,
+    "publish_from_scheduled_job": false,
+    "require_caption_hash": true
   },
   "video_validation": {
-    "allowed_containers": [".mp4", ".mov"],
-    "min_duration_seconds": 3.0,
-    "max_duration_seconds": 60.0,
+    "allowed_containers": [
+      ".mp4",
+      ".mov"
+    ],
+    "min_duration_seconds": 3,
+    "max_duration_seconds": 60,
     "target_aspect_ratio": "9:16",
     "min_width": 720,
     "min_height": 1280
+  },
+  "daily_creation": {
+    "source": "antigravity_automations",
+    "time_local": "09:00",
+    "timezone": "Europe/Istanbul",
+    "new_agent_session_each_day": true,
+    "brief_command": "python -m src.daily_brief",
+    "provider": "Gemini Create video UI",
+    "aspect_ratio": "9:16",
+    "max_new_video_generations_per_day": 1,
+    "max_auto_regenerations": 0,
+    "require_new_media_evidence": true,
+    "no_paid_video_api": true
+  },
+  "security": {
+    "secrets_in_env_only": true,
+    "public_git_must_not_include_personal_video_or_cookies": true,
+    "unknown_api_result_do_not_retry": true
   }
 }
